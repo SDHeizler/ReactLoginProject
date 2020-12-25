@@ -2,7 +2,9 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import GlobalStateProvider, { globalContext} from './Context/GlobalState';
 import Home from './Components/Home';
-import Register from './Components/Register'
+import Register from './Components/Register';
+import Login from './Components/Login';
+import User from './Components/UserPage';
 import './App.css';
 
 class App extends React.Component {
@@ -13,6 +15,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' component={Home}></Route>
           <Route path='/Register' component={Register}></Route>
+          <Route exact path='/Login' component={Login}></Route>
+          <Route path='/Login/User' component={User}></Route>
         </Switch>
       </GlobalStateProvider>
     </div>

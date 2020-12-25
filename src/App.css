@@ -62,7 +62,80 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
   }
+  .CreateAccountForm {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15vh;
+  }
+  .CreateAccountForm input {
+    margin-bottom: 20px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+  }
+  .CreateAccountForm label {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .CreateAccountForm button {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 45px;
+  }
+  .CreateAccountUl {
+    margin-left: auto;
+    margin-right: auto;
+    list-style-type: none;
+    opacity: 0.8;
+  }
+  .UserNav {
+    background-color: rgb(55, 55, 236);
+    color: white;
+  }
+  .UserInputDivContainer {
+    width: 60%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  .UserInputDivContainer input {
+    width: 60%;
+    height: 40px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+  }
+  .UserInputDivContainer button {
+    height: 40px;
+    width: 40%;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+  }
+  .UserPostList {
+    width: 60%;
+    list-style-type: none;
+    border: 1px solid black;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+  }
+  .UserPostList li {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
 }
+
 @media screen and (min-width: 900px) {
   .HomePageContainerStyle {
     display: flex;
@@ -143,5 +216,54 @@
     margin-left: auto;
     margin-right: auto;
     height: 45px;
+  }
+  .CreateAccountUl {
+    margin-left: 20%;
+    margin-right: auto;
+    list-style-type: none;
+    opacity: 0.8;
+  }
+  .UserNav {
+    background-color: blue;
+    color: white;
+  }
+  .UserInputDivContainer {
+    width: 60%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  .UserInputDivContainer input {
+    width: 80%;
+    height: 40px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+  }
+  .UserInputDivContainer button {
+    height: 40px;
+    width: 20%;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+  }
+  .UserPostList {
+    width: 60%;
+    list-style-type: none;
+    border: 1px solid black;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+    border-radius: 8px;
+  }
+  .UserPostList li {
+    border-bottom: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
   }
 }

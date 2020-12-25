@@ -8,7 +8,7 @@ class Home extends React.Component {
                 <h1>Welcome!</h1>
                 <div className='LinkContainerStyle'>
                     <div className='LinkDivStyle'><Link to='/Register' className='CreateAccountLink'>Create Account</Link></div>
-                    <div className='LinkDivStyle'><Link className='LoginLink'  >Login</Link></div>
+                    <div className='LinkDivStyle'><Link to='/Login' className='LoginLink'  >Login</Link></div>
                 </div>
             </div>
          );
