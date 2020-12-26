@@ -5,8 +5,7 @@ class Register extends React.Component {
         return ( 
         <GlobalStateProvider>
             <div>
-                {console.log(this.context)}
-                <form className='container CreateAccountForm'>
+                <form onSubmit={(e) => this.context.registerformSubmit(e)} className='container CreateAccountForm'>
                     <label>UserName</label>
                     <input  
                     onChange={(e) => this.context.registerUsernameChange(e)} 
@@ -35,17 +34,20 @@ class Register extends React.Component {
                     value={this.context.state.RegisterPassword} 
                     placeholder='Enter Password'></input>
                     <ul className='CreateAccountUl'>
-                        <li style={{textDecoration:this.context.state.CharacterLength ? 'line-through' : ''}}>Password Must be at least 8 characters long</li>
-                        <li style={{textDecoration:this.context.state.CapitalLetter ? 'line-through' : ''}}>Must include a Capital letter</li>
-                        <li style={{textDecoration:this.context.state.SpecialCharacter ? 'line-through' : ''}}>Must include a symbol ex. !,@,#,$,%,^,&,*</li>
+                        <li style={{textDecoration:this.context.state.CharacterLength ? 'line-through' : '', border:this.context.state.InvalidCharacterLength}}>Password Must be at least 8 characters long</li>
+                        <li style={{textDecoration:this.context.state.CapitalLetter ? 'line-through' : '', border:this.context.state.InvalidCapitalLetter}}>Must include a Capital letter</li>
+                        <li style={{textDecoration:this.context.state.SpecialCharacter ? 'line-through' : '', border:this.context.state.InvalidSpecialCharacter}}>Must include a symbol ex. !,@,#,$,%,^,&,*</li>
                     </ul>
                     <label>Confirm Password</label>
-                    <input  
+                    <input
+                    style={{border:this.context.state.InvalidConfirmPassword}}
                     onChange={(e) => this.context.confirmPasswordChange(e)} htmlFor='ConfirmPassword' 
                     type='password' 
                     required 
                     name='ConfirmPassword' 
                     value={this.context.state.ConfirmPassword} placeholder='Confirm Password'></input>
+                    <p className='RegisterConfirmPasswordError'
+                    style={{display:this.context.state.InvalidConfirmPasswordWarning}} >Passwords do not match</p>
                     <button className='btn-primary' type='Submit'>Create Account</button>
                 </form>
             </div>

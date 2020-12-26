@@ -18,6 +18,12 @@ class GlobalStateProvider extends React.Component {
         SpecialSymbol:false,
         UserPosts:[],
         UserPost:'',
+        RegisterButtonDisabled:false,
+        InvalidCharacterLength:'',
+        InvalidSpecialSymbol:'',
+        InvalidCapitalLetter:'',
+        InvalidConfirmPassword:'',
+        InvalidConfirmPasswordWarning:'none',
     };
     loginEmailChange = (e) => {
          let value = e.target.value;
@@ -48,25 +54,65 @@ class GlobalStateProvider extends React.Component {
             })
     };
     registerPasswordChange = (e) => {
-         let value = e.target.value;
-         let capRegex = /[A-Z]/;
-         let specSymbolRegex = /(?=.*[!@#$%^&*])/;
+        let value = e.target.value;
+        let capRegex = /[A-Z]/;
+        let specSymbolRegex = /(?=.*[!@#$%^&*])/;
         this.setState({
-                ...this.state,
-                RegisterPassword:value,
-                CharacterLength:this.state.RegisterPassword.length >= 8 ? true : false,
-                CapitalLetter:capRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false : true,
-                SpecialCharacter: specSymbolRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false: true,
+            ...this.state,
+            RegisterPassword:value,
+            CharacterLength:this.state.RegisterPassword.length >= 8 ? true : false,
+            CapitalLetter:capRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false : true,
+            SpecialCharacter: specSymbolRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false: true,
             });
     };
     confirmPasswordChange = (e) => {
-         let value = e.target.value;
+        let value = e.target.value;
         this.setState({
                 ...this.state,
                 ConfirmPassword:value
             })
     };
-   
+    registerformSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.SpecialCharacter)
+        this.setState({
+            InvalidCharacterLength:'',
+            InvalidSpecialSymbol:'',
+            InvalidCapitalLetter:'',
+            InvalidConfirmPassword:'',
+            InvalidConfirmPasswordWarning:'none',
+        });
+        let passMatchTest = this.state.RegisterPassword === this.state.ConfirmPassword ? true : false;
+        if(this.state.SpecialCharacter && this.state.CharacterLength && this.state.CapitalLetter && passMatchTest){
+            console.log('submit')
+        }else{
+            if(!this.state.SpecialCharacter){
+                this.setState({
+                    ...this.state,
+                    InvalidSpecialCharacter:'1px solid Red'
+                })
+            }
+            if(!this.state.CharacterLength){
+                this.setState({
+                    ...this.state,
+                    InvalidCharacterLength:'1px solid Red'
+                })
+            }
+            if(!this.state.CapitalLetter){
+                this.setState({
+                    ...this.state,
+                    InvalidCapitalLetter:'1px solid Red'
+                })
+            }
+            if(!passMatchTest){
+                 this.setState({
+                    ...this.state,
+                    InvalidConfirmPassword:'3px solid Red',
+                    InvalidConfirmPasswordWarning:'',
+                })
+            }
+        }
+    }
     render() { 
         return ( 
             <globalContext.Provider value={
@@ -77,7 +123,8 @@ class GlobalStateProvider extends React.Component {
                 registerUsernameChange:this.registerUsernameChange,
                 registerEmailChange:this.registerEmailChange,
                 registerPasswordChange:this.registerPasswordChange,
-                confirmPasswordChange:this.confirmPasswordChange    
+                confirmPasswordChange:this.confirmPasswordChange,
+                registerformSubmit:this.registerformSubmit,   
                 }}>
                 {this.props.children}
             </globalContext.Provider>
