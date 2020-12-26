@@ -9,7 +9,7 @@ class Login extends React.Component {
                 <form className='container CreateAccountForm'>
                     <label>Email</label>
                     <input 
-                    onChange={(e) => this.context.onChange(e)} 
+                    onChange={(e) => this.context.loginEmailChange(e)} 
                     htmlFor='Email' 
                     type='email' 
                     required name='LoginEmail' 
@@ -17,7 +17,7 @@ class Login extends React.Component {
                     placeholder='Enter Email'></input>
                     <label>Password</label>
                     <input 
-                    onChange={(e) => this.context.onChange(e)} 
+                    onChange={(e) => this.context.loginPasswordChange(e)} 
                     htmlFor='Password' 
                     type='password' 
                     required 

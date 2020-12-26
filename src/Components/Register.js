@@ -5,10 +5,11 @@ class Register extends React.Component {
         return ( 
         <GlobalStateProvider>
             <div>
+                {console.log(this.context)}
                 <form className='container CreateAccountForm'>
                     <label>UserName</label>
                     <input  
-                    onChange={(e) => this.context.onChange(e)} 
+                    onChange={(e) => this.context.registerUsernameChange(e)} 
                     htmlFor='UserName' 
                     type='text' 
                     required 
@@ -17,7 +18,7 @@ class Register extends React.Component {
                     placeholder='Enter Username'></input>
                     <label>Email</label>
                     <input  
-                    onChange={(e) => this.context.onChange(e)} 
+                    onChange={(e) => this.context.registerEmailChange(e)} 
                     htmlFor='Email' 
                     type='email' 
                     required 
@@ -25,8 +26,8 @@ class Register extends React.Component {
                     value={this.context.state.RegisterEmail} 
                     placeholder='Enter Email'></input>
                     <label>Password</label>
-                    <input  
-                    onChange={(e) => this.context.onChange(e)} 
+                    <input
+                    onChange={(e) => this.context.registerPasswordChange(e)} 
                     htmlFor='Password' 
                     type='password' 
                     required 
@@ -40,7 +41,7 @@ class Register extends React.Component {
                     </ul>
                     <label>Confirm Password</label>
                     <input  
-                    onChange={(e) => this.context.onChange(e)} htmlFor='ConfirmPassword' 
+                    onChange={(e) => this.context.confirmPasswordChange(e)} htmlFor='ConfirmPassword' 
                     type='password' 
                     required 
                     name='ConfirmPassword' 

@@ -13,54 +13,72 @@ class GlobalStateProvider extends React.Component {
         RegisterEmail:'',
         RegisterPassword:'',
         ConfirmPassword:'',
-        CharacterLength:true,
+        CharacterLength:false,
         CapitalLetter:false,
         SpecialSymbol:false,
         UserPosts:[],
         UserPost:'',
-    }
-    onChange = (e) => {
-        let value = e.target.value;
-        if(e.target.name === 'LoginEmail'){
+    };
+    loginEmailChange = (e) => {
+         let value = e.target.value;
             this.setState({
                 ...this.state,
                 LoginEmail:value
             })
-        } else if(e.target.name === 'LoginPassword'){
-            this.setState({
+    };
+    loginPasswordChange = (e) => {
+         let value = e.target.value;
+        this.setState({
                 ...this.state,
                 LoginPassword:value
             })
-        } else if(e.target.name === 'RegisterUsername'){
-            this.setState({
+    };
+    registerUsernameChange = (e) => {
+        let value = e.target.value;
+        this.setState({
                 ...this.state,
                 RegisterUsername:value
             })
-        } else if(e.target.name === 'RegisterEmail'){
-            this.setState({
+    };
+    registerEmailChange = (e) => {
+         let value = e.target.value;
+        this.setState({
                 ...this.state,
                 RegisterEmail:value
             })
-        } else if(e.target.name === 'RegisterPassword'){
-            this.setState({
+    };
+    registerPasswordChange = (e) => {
+         let value = e.target.value;
+         let capRegex = /[A-Z]/;
+         let specSymbolRegex = /(?=.*[!@#$%^&*])/;
+        this.setState({
                 ...this.state,
-                RegisterPassword:value
-            })
-        } else if(e.target.name === 'UserPost'){
-            this.setState({
+                RegisterPassword:value,
+                CharacterLength:this.state.RegisterPassword.length >= 8 ? true : false,
+                CapitalLetter:capRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false : true,
+                SpecialCharacter: specSymbolRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false: true,
+            });
+    };
+    confirmPasswordChange = (e) => {
+         let value = e.target.value;
+        this.setState({
                 ...this.state,
-                UserPost:value
-            })
-        }else{
-             this.setState({
-                 ...this.state,
                 ConfirmPassword:value
             })
-        }
-    }
+    };
+   
     render() { 
         return ( 
-            <globalContext.Provider value={{state:this.state, onChange:this.onChange}}>
+            <globalContext.Provider value={
+                {state:
+                this.state, 
+                loginEmailChange:this.loginEmailChange, 
+                loginPasswordChange:this.loginPasswordChange,
+                registerUsernameChange:this.registerUsernameChange,
+                registerEmailChange:this.registerEmailChange,
+                registerPasswordChange:this.registerPasswordChange,
+                confirmPasswordChange:this.confirmPasswordChange    
+                }}>
                 {this.props.children}
             </globalContext.Provider>
          );
