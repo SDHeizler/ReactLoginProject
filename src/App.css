@@ -142,6 +142,15 @@
     opacity: 0.8;
     color: red;
   }
+  .UserPostListItem {
+    display: flex;
+    justify-content: space-between;
+  }
+  .UserPostListItem button {
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+  }
 }
 
 @media screen and (min-width: 900px) {
@@ -281,5 +290,14 @@
     margin-right: auto;
     opacity: 0.8;
     color: red;
+  }
+  .UserPostListItem {
+    display: flex;
+    justify-content: space-between;
+  }
+  .UserPostListItem button {
+    border-radius: 8px;
+    background-color: red;
+    color: white;
   }
 }

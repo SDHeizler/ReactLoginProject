@@ -5,8 +5,7 @@ class Login extends React.Component {
         return ( 
             <GlobalStateProvider>
              <div>
-                 {console.log(this.context.state.LoginEmail)}
-                <form className='container CreateAccountForm'>
+                <form onSubmit={(e) => this.context.loginFormSubmit(e)} className='container CreateAccountForm'>
                     <label>Email</label>
                     <input 
                     onChange={(e) => this.context.loginEmailChange(e)} 

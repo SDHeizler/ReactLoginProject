@@ -9,14 +9,16 @@ class User extends React.Component {
                     <h1 className='navbar-brand'>Hello {this.context.state.RegisterUsername}</h1>
                     <button className='btn-danger'>Logout</button>
                 </nav>
-                <div className=' UserInputDivContainer'>
-                    <input onChange={(e) => this.context.onChange(e)} name='UserPost' type='text' placeholder='Enter posts' value={this.context.state.UserPost}></input>
-                    <button className='btn-primary'>Add Post</button>
-                </div>
+                <form onSubmit={(e) => this.context.addPostSubmit(e)} className=' UserInputDivContainer'>
+                    <input onChange={(e) => this.context.inputPostChange(e)} name='UserPost' type='text' placeholder='Enter posts' value={this.context.state.UserPost}></input>
+                    <button type='Submit' className='btn-primary'>Add Post</button>
+                </form>
                 <ul className='container UserPostList'>
-                    <li>Dummy Post Dummy Post Dummy Post Dummy Post</li>
-                    <li>Dummy Post</li>
-                    <li>Dummy Post</li>
+                    {this.context.state.UserPosts.map((ele) => {
+                        return (
+                            <li className='UserPostListItem' key={ele.id}>{ele.post}<button onClick={(id) => this.context.deletePostClick(ele.id)}>X</button></li>
+                        );
+                    })}
                 </ul>
             </div>
             </GlobalStateProvider>

@@ -16,7 +16,7 @@ class GlobalStateProvider extends React.Component {
         CharacterLength:false,
         CapitalLetter:false,
         SpecialSymbol:false,
-        UserPosts:[],
+        UserPosts:[{id:0, post:'Dummy post 1'}, {id:1, post:'Dummy post 2'},{id:2, post:'Dummy post 3'}],
         UserPost:'',
         RegisterButtonDisabled:false,
         InvalidCharacterLength:'',
@@ -26,14 +26,14 @@ class GlobalStateProvider extends React.Component {
         InvalidConfirmPasswordWarning:'none',
     };
     loginEmailChange = (e) => {
-         let value = e.target.value;
+        let value = e.target.value;
             this.setState({
                 ...this.state,
                 LoginEmail:value
             })
     };
     loginPasswordChange = (e) => {
-         let value = e.target.value;
+        let value = e.target.value;
         this.setState({
                 ...this.state,
                 LoginPassword:value
@@ -47,7 +47,7 @@ class GlobalStateProvider extends React.Component {
             })
     };
     registerEmailChange = (e) => {
-         let value = e.target.value;
+        let value = e.target.value;
         this.setState({
                 ...this.state,
                 RegisterEmail:value
@@ -74,8 +74,8 @@ class GlobalStateProvider extends React.Component {
     };
     registerformSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.SpecialCharacter)
         this.setState({
+            ...this.state,
             InvalidCharacterLength:'',
             InvalidSpecialSymbol:'',
             InvalidCapitalLetter:'',
@@ -105,13 +105,45 @@ class GlobalStateProvider extends React.Component {
                 })
             }
             if(!passMatchTest){
-                 this.setState({
+                this.setState({
                     ...this.state,
                     InvalidConfirmPassword:'3px solid Red',
                     InvalidConfirmPasswordWarning:'',
                 })
             }
         }
+    }
+    loginFormSubmit = (e) => {
+        e.preventDefault();
+        console.log('Login Submit')
+    }
+    inputPostChange = (e) => {
+        let value = e.target.value
+        this.setState({
+            ...this.state,
+            UserPost:value
+        })
+    }
+    addPostSubmit = (e) => {
+        e.preventDefault();
+        let newUserPost = {id:this.state.UserPosts.length, post:this.state.UserPost}
+        this.setState({
+            ...this.state,
+            UserPosts:[...this.state.UserPosts, newUserPost],
+            UserPost:''
+        })
+    }
+    deletePostClick = (id) => {
+        this.setState({
+            ...this.state,
+            UserPosts:this.state.UserPosts.filter((ele) => {
+                if(ele.id !== id){
+                    return ele
+                }else{
+                    return ''
+                }
+            })
+        })
     }
     render() { 
         return ( 
@@ -124,7 +156,11 @@ class GlobalStateProvider extends React.Component {
                 registerEmailChange:this.registerEmailChange,
                 registerPasswordChange:this.registerPasswordChange,
                 confirmPasswordChange:this.confirmPasswordChange,
-                registerformSubmit:this.registerformSubmit,   
+                registerformSubmit:this.registerformSubmit,
+                loginFormSubmit:this.loginFormSubmit,  
+                inputPostChange:this.inputPostChange,
+                addPostSubmit:this.addPostSubmit,
+                deletePostClick:this.deletePostClick, 
                 }}>
                 {this.props.children}
             </globalContext.Provider>
