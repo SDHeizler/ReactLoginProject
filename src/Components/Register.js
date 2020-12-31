@@ -51,7 +51,7 @@ class Register extends React.Component {
                     name='ConfirmPassword' 
                     value={this.context.state.ConfirmPassword} placeholder='Confirm Password'></input>
                     <p className='RegisterConfirmPasswordError'
-                    style={{display:this.context.state.InvalidConfirmPasswordWarning}} >Passwords do not match</p>
+                    style={{display:this.context.state.InvalidConfirmPasswordWarning}} >{this.context.state.RegistrationError}</p>
                     <button className='btn-primary' type='Submit'>Create Account</button>
                 </form>
             </div>

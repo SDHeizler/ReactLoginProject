@@ -25,6 +25,7 @@ class GlobalStateProvider extends React.Component {
         InvalidCapitalLetter:'',
         InvalidConfirmPassword:'',
         InvalidConfirmPasswordWarning:'none',
+        RegistrationError:'',
         RegisterAccountSuccess:false,
         LoginFailedWarning:false,
     };
@@ -94,6 +95,7 @@ class GlobalStateProvider extends React.Component {
                 registerPassword:this.state.RegisterPassword
             })
             .then((response) => {
+                console.log(response)
                     this.setState({
                         RegisterAccountSuccess:true,
                         RegisterUsername:'',
@@ -106,7 +108,11 @@ class GlobalStateProvider extends React.Component {
                     })
             })
             .catch((err) => {
-                console.log(err)
+                this.setState({
+                    ...this.state,
+                    InvalidConfirmPasswordWarning:'',
+                    RegistrationError:"User Already Exists"
+                })
             })
         }else{
             if(!this.state.SpecialSymbol){
@@ -132,6 +138,7 @@ class GlobalStateProvider extends React.Component {
                     ...this.state,
                     InvalidConfirmPassword:'3px solid Red',
                     InvalidConfirmPasswordWarning:'',
+                    RegistrationError:"Password doesn't match"
                 })
             }
         }
