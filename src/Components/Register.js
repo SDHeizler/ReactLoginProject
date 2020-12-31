@@ -5,6 +5,10 @@ class Register extends React.Component {
         return ( 
         <GlobalStateProvider>
             <div>
+                <div style={{display:this.context.state.RegisterAccountSuccess ? '' : 'none'}} className="container alert alert-success RegisterAccountCreatedAlert" >
+                        Account Created
+                        <button onClick={this.context.closeRegisterAccountSuccessClick} className="btn-close "></button>
+                    </div>
                 <form onSubmit={(e) => this.context.registerformSubmit(e)} className='container CreateAccountForm'>
                     <label>UserName</label>
                     <input  
@@ -36,7 +40,7 @@ class Register extends React.Component {
                     <ul className='CreateAccountUl'>
                         <li style={{textDecoration:this.context.state.CharacterLength ? 'line-through' : '', border:this.context.state.InvalidCharacterLength}}>Password Must be at least 8 characters long</li>
                         <li style={{textDecoration:this.context.state.CapitalLetter ? 'line-through' : '', border:this.context.state.InvalidCapitalLetter}}>Must include a Capital letter</li>
-                        <li style={{textDecoration:this.context.state.SpecialCharacter ? 'line-through' : '', border:this.context.state.InvalidSpecialCharacter}}>Must include a symbol ex. !,@,#,$,%,^,&,*</li>
+                        <li style={{textDecoration:this.context.state.SpecialSymbol ? 'line-through' : '', border:this.context.state.InvalidSpecialCharacter}}>Must include a symbol ex. !,@,#,$,%,^,&,*</li>
                     </ul>
                     <label>Confirm Password</label>
                     <input

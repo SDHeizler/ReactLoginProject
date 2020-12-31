@@ -1,5 +1,6 @@
 import React from 'react';
-
+import {redirect} from 'react-router-dom';
+import axios from 'axios';
 // CreateContext
 export const globalContext = React.createContext();
 
@@ -9,7 +10,7 @@ class GlobalStateProvider extends React.Component {
         Title:'React Test Title',
         LoginEmail:'',
         LoginPassword:'',
-        RegisterUsername:'Test User',
+        RegisterUsername:'',
         RegisterEmail:'',
         RegisterPassword:'',
         ConfirmPassword:'',
@@ -24,6 +25,8 @@ class GlobalStateProvider extends React.Component {
         InvalidCapitalLetter:'',
         InvalidConfirmPassword:'',
         InvalidConfirmPasswordWarning:'none',
+        RegisterAccountSuccess:false,
+        LoginFailedWarning:false,
     };
     loginEmailChange = (e) => {
         let value = e.target.value;
@@ -62,7 +65,7 @@ class GlobalStateProvider extends React.Component {
             RegisterPassword:value,
             CharacterLength:this.state.RegisterPassword.length >= 8 ? true : false,
             CapitalLetter:capRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false : true,
-            SpecialCharacter: specSymbolRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false: true,
+            SpecialSymbol: specSymbolRegex.test(this.state.RegisterPassword) !== true || this.state.RegisterPassword.length <= 1 ? false: true,
             });
     };
     confirmPasswordChange = (e) => {
@@ -81,12 +84,32 @@ class GlobalStateProvider extends React.Component {
             InvalidCapitalLetter:'',
             InvalidConfirmPassword:'',
             InvalidConfirmPasswordWarning:'none',
+            RegisterAccountSuccess:false,
         });
         let passMatchTest = this.state.RegisterPassword === this.state.ConfirmPassword ? true : false;
-        if(this.state.SpecialCharacter && this.state.CharacterLength && this.state.CapitalLetter && passMatchTest){
-            console.log('submit')
+        if(this.state.SpecialSymbol && this.state.CharacterLength && this.state.CapitalLetter && passMatchTest){
+            axios.post('http://localhost:8000/Register', {
+                registerUsername:this.state.RegisterUsername,
+                registerEmail:this.state.RegisterEmail,
+                registerPassword:this.state.RegisterPassword
+            })
+            .then((response) => {
+                    this.setState({
+                        RegisterAccountSuccess:true,
+                        RegisterUsername:'',
+                        RegisterEmail:'',
+                        RegisterPassword:'',
+                        ConfirmPassword:'',
+                        CharacterLength:false,
+                        CapitalLetter:false,
+                        SpecialSymbol:false,
+                    })
+            })
+            .catch((err) => {
+                console.log(err)
+            })
         }else{
-            if(!this.state.SpecialCharacter){
+            if(!this.state.SpecialSymbol){
                 this.setState({
                     ...this.state,
                     InvalidSpecialCharacter:'1px solid Red'
@@ -145,6 +168,18 @@ class GlobalStateProvider extends React.Component {
             })
         })
     }
+    closeRegisterAccountSuccessClick = () => {
+        this.setState({
+            ...this.state,
+            RegisterAccountSuccess:false
+        })
+    }
+    closeLoginFailedWarningClick = () => {
+        this.setState({
+            ...this.state,
+            LoginFailedWarning:false
+        })
+    }
     render() { 
         return ( 
             <globalContext.Provider value={
@@ -160,7 +195,9 @@ class GlobalStateProvider extends React.Component {
                 loginFormSubmit:this.loginFormSubmit,  
                 inputPostChange:this.inputPostChange,
                 addPostSubmit:this.addPostSubmit,
-                deletePostClick:this.deletePostClick, 
+                deletePostClick:this.deletePostClick,
+                closeRegisterAccountSuccessClick:this.closeRegisterAccountSuccessClick,
+                closeLoginFailedWarningClick:this.closeLoginFailedWarningClick, 
                 }}>
                 {this.props.children}
             </globalContext.Provider>

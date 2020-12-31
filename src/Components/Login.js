@@ -25,6 +25,10 @@ class Login extends React.Component {
                     placeholder='Enter Password'></input>
                     <button className='btn-primary' type='Submit'>Login</button>
                 </form>
+                <div style={{display:this.context.state.LoginFailedWarning ? '' : 'none'}} className="container alert alert-danger LoginFailedAlert" >
+                        Login Failed
+                        <button onClick={this.context.closeLoginFailedWarningClick} className="btn-close "></button>
+                    </div>
             </div>
             </GlobalStateProvider>
          );

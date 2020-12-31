@@ -65,7 +65,7 @@
   .CreateAccountForm {
     display: flex;
     flex-direction: column;
-    margin-top: 15vh;
+    margin-top: 8vh;
   }
   .CreateAccountForm input {
     margin-bottom: 20px;
@@ -126,6 +126,7 @@
     transition: ease-in-out;
     transition-duration: 0.2s;
     border-radius: 8px;
+    margin-top: 1%;
   }
   .UserPostList li {
     border-bottom: 1px solid black;
@@ -150,6 +151,34 @@
     border-radius: 8px;
     background-color: red;
     color: white;
+  }
+  .RegisterAccountCreatedAlert {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    position: relative;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  .RegisterAccountCreatedAlert button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+  }
+  .LoginFailedAlert {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    position: relative;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  .LoginFailedAlert button {
+    position: absolute;
+    right: 0;
+    width: 40px;
   }
 }
 
@@ -214,7 +243,7 @@
   .CreateAccountForm {
     display: flex;
     flex-direction: column;
-    margin-top: 15vh;
+    margin-top: 8vh;
   }
   .CreateAccountForm input {
     margin-bottom: 20px;
@@ -275,6 +304,7 @@
     transition: ease-in-out;
     transition-duration: 0.2s;
     border-radius: 8px;
+    margin-top: 1%;
   }
   .UserPostList li {
     border-bottom: 1px solid black;
@@ -299,5 +329,33 @@
     border-radius: 8px;
     background-color: red;
     color: white;
+  }
+  .RegisterAccountCreatedAlert {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    position: relative;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  .RegisterAccountCreatedAlert button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+  }
+  .LoginFailedAlert {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+    position: relative;
+    transition: ease-in-out;
+    transition-duration: 0.2s;
+  }
+  .LoginFailedAlert button {
+    position: absolute;
+    right: 0;
+    width: 40px;
   }
 }
