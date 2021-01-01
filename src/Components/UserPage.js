@@ -6,7 +6,7 @@ class User extends React.Component {
             <GlobalStateProvider>
             <div>
                 <nav className='navbar UserNav'>
-                    <h1 className='navbar-brand'>Hello {this.context.state.RegisterUsername}</h1>
+                    <h1 className='navbar-brand'>Hello {this.context.state.UserUsername}</h1>
                     <button className='btn-danger'>Logout</button>
                 </nav>
                 <form onSubmit={(e) => this.context.addPostSubmit(e)} className=' UserInputDivContainer'>

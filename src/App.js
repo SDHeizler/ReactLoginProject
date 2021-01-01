@@ -8,15 +8,15 @@ import User from './Components/UserPage';
 import './App.css';
 
 class App extends React.Component {
-  render() { 
+  render() {
     return (
     <div className="App">
       <GlobalStateProvider>
         <Switch>
-          <Route exact path='/' component={Home}></Route>
-          <Route path='/Register' component={Register}></Route>
-          <Route exact path='/Login' component={Login}></Route>
-          <Route path='/Login/User' component={User}></Route>
+          <Route exact path='/' ><Home></Home></Route>
+          <Route path='/Register' ><Register></Register></Route>
+          <Route exact path='/Login' ><Login></Login></Route>
+          <Route path='/Login/User' ><User></User></Route>
         </Switch>
       </GlobalStateProvider>
     </div>

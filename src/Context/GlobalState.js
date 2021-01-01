@@ -1,13 +1,12 @@
 import React from 'react';
-import {redirect} from 'react-router-dom';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom'
 // CreateContext
 export const globalContext = React.createContext();
 
 // GlobalState
 class GlobalStateProvider extends React.Component {
     state = {
-        Title:'React Test Title',
         LoginEmail:'',
         LoginPassword:'',
         RegisterUsername:'',
@@ -28,6 +27,11 @@ class GlobalStateProvider extends React.Component {
         RegistrationError:'',
         RegisterAccountSuccess:false,
         LoginFailedWarning:false,
+        UserID:'',
+        UserEmail:'',
+        UserUsername:'',
+        Loading:false,
+        Redirect:false,
     };
     loginEmailChange = (e) => {
         let value = e.target.value;
@@ -95,7 +99,6 @@ class GlobalStateProvider extends React.Component {
                 registerPassword:this.state.RegisterPassword
             })
             .then((response) => {
-                console.log(response)
                     this.setState({
                         RegisterAccountSuccess:true,
                         RegisterUsername:'',
@@ -143,9 +146,39 @@ class GlobalStateProvider extends React.Component {
             }
         }
     }
-    loginFormSubmit = (e) => {
+    loginFormSubmit = async (e) => {
         e.preventDefault();
-        console.log('Login Submit')
+        this.setState({
+            ...this.state,
+            LoginFailedWarning:false
+        })
+        let res = await axios.post('http://localhost:8000/Login',{auth : {
+            loginEmail:this.state.LoginEmail,
+            loginPassword:this.state.LoginPassword
+        }})
+        .then((response) => {
+            this.setState({
+                ...this.state,
+                LoginEmail:'',
+                LoginPassword:'',
+                UserID:response.data.id,
+                UserEmail:response.data.email,
+                UserUsername:response.data.username,
+                Loading:true,
+                LoginFailedWarning:false,
+                Redirect:true
+            })
+            this.props.history.push('/Login/User')
+        })
+        .catch((error) => {
+            this.setState({
+                ...this.setState({
+                    ...this.state,
+                    LoginFailedWarning:true
+                })
+            })
+        })
+        return res;
     }
     inputPostChange = (e) => {
         let value = e.target.value
@@ -211,6 +244,6 @@ class GlobalStateProvider extends React.Component {
          );
     }
 };
- export default GlobalStateProvider;
+ export default withRouter(GlobalStateProvider);
 
 
