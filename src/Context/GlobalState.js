@@ -16,7 +16,7 @@ class GlobalStateProvider extends React.Component {
         CharacterLength:false,
         CapitalLetter:false,
         SpecialSymbol:false,
-        UserPosts:[{id:0, post:'Dummy post 1'}, {id:1, post:'Dummy post 2'},{id:2, post:'Dummy post 3'}],
+        UserPosts:[],
         UserPost:'',
         RegisterButtonDisabled:false,
         InvalidCharacterLength:'',
@@ -27,7 +27,7 @@ class GlobalStateProvider extends React.Component {
         RegistrationError:'',
         RegisterAccountSuccess:false,
         LoginFailedWarning:false,
-        UserID:'',
+        UserID:'5fee40385cbb9e3a2caf7f3c',
         UserEmail:'',
         UserUsername:'',
         Loading:false,
@@ -168,7 +168,7 @@ class GlobalStateProvider extends React.Component {
                 LoginFailedWarning:false,
                 Redirect:true
             })
-            this.props.history.push('/Login/User')
+            this.props.history.push(`/Login/User/${this.state.UserID}`)
         })
         .catch((error) => {
             this.setState({
@@ -187,26 +187,50 @@ class GlobalStateProvider extends React.Component {
             UserPost:value
         })
     }
-    addPostSubmit = (e) => {
+    addPostSubmit = async (e) => {
         e.preventDefault();
         let newUserPost = {id:this.state.UserPosts.length, post:this.state.UserPost}
-        this.setState({
-            ...this.state,
-            UserPosts:[...this.state.UserPosts, newUserPost],
-            UserPost:''
+        let res = await
+        axios.put(`http://localhost:8000/Login/User/${this.state.UserID}`, {
+            params:{
+                post:newUserPost
+            }
         })
+        .then((response) => {
+            if(response){
+                console.log(response)
+                this.setState({
+                    ...this.state,
+                    UserPosts:response.data,
+                    UserPost:''
+                })
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+        return res;
     }
-    deletePostClick = (id) => {
-        this.setState({
-            ...this.state,
-            UserPosts:this.state.UserPosts.filter((ele) => {
-                if(ele.id !== id){
-                    return ele
-                }else{
-                    return ''
-                }
-            })
+    deletePostClick = async (id) => {
+        let res = await
+        axios.delete(`http://localhost:8000/Login/User/${this.state.UserID}`, {
+            data:{
+                deletePost:id
+            }
         })
+        .then((response) => {
+            if(response){
+                console.log(response)
+                this.setState({
+                    ...this.state,
+                    UserPosts:response.data
+                })
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+        return res;
     }
     closeRegisterAccountSuccessClick = () => {
         this.setState({
@@ -219,6 +243,22 @@ class GlobalStateProvider extends React.Component {
             ...this.state,
             LoginFailedWarning:false
         })
+    }
+    getUserTodos = async () => {
+        let res = await 
+        axios.get(`http://localhost:8000/Login/User/${this.state.UserID}`)
+        .then((response) => {
+            if(response){
+                this.setState({
+                    ...this.state,
+                    UserPosts:response.data
+                })
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+        return res;
     }
     render() { 
         return ( 
@@ -237,7 +277,8 @@ class GlobalStateProvider extends React.Component {
                 addPostSubmit:this.addPostSubmit,
                 deletePostClick:this.deletePostClick,
                 closeRegisterAccountSuccessClick:this.closeRegisterAccountSuccessClick,
-                closeLoginFailedWarningClick:this.closeLoginFailedWarningClick, 
+                closeLoginFailedWarningClick:this.closeLoginFailedWarningClick,
+                getUserTodos:this.getUserTodos, 
                 }}>
                 {this.props.children}
             </globalContext.Provider>

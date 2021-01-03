@@ -1,6 +1,9 @@
 import React from 'react';
 import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
 class User extends React.Component {
+    async componentDidMount(){
+        this.context.getUserTodos()
+    }
     render() { 
         return ( 
             <GlobalStateProvider>
