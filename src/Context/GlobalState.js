@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 // CreateContext
 export const globalContext = React.createContext();
 
@@ -27,7 +27,7 @@ class GlobalStateProvider extends React.Component {
         RegistrationError:'',
         RegisterAccountSuccess:false,
         LoginFailedWarning:false,
-        UserID:'5fee40385cbb9e3a2caf7f3c',
+        UserID:'',
         UserEmail:'',
         UserUsername:'',
         Loading:false,
@@ -157,6 +157,7 @@ class GlobalStateProvider extends React.Component {
             loginPassword:this.state.LoginPassword
         }})
         .then((response) => {
+            console.log(response)
             this.setState({
                 ...this.state,
                 LoginEmail:'',
@@ -166,9 +167,11 @@ class GlobalStateProvider extends React.Component {
                 UserUsername:response.data.username,
                 Loading:true,
                 LoginFailedWarning:false,
-                Redirect:true
+                Redirect:true,
+                UserPosts:response.data.posts
             })
-            this.props.history.push(`/Login/User/${this.state.UserID}`)
+            localStorage.setItem("id", JSON.stringify(this.state.UserID));
+            this.props.history.push(`/Login/User/`)
         })
         .catch((error) => {
             this.setState({
@@ -244,14 +247,20 @@ class GlobalStateProvider extends React.Component {
             LoginFailedWarning:false
         })
     }
-    getUserTodos = async () => {
+    getUserData = async () => {
+        let getId = localStorage.getItem("id");
+        let id = JSON.parse(getId);
         let res = await 
-        axios.get(`http://localhost:8000/Login/User/${this.state.UserID}`)
+        axios.get(`http://localhost:8000/Login/User/${id}`)
         .then((response) => {
+            console.log(response)
             if(response){
                 this.setState({
                     ...this.state,
-                    UserPosts:response.data
+                    UserID:response.data.id,
+                    UserEmail:response.data.email,
+                    UserUsername:response.data.username,
+                    UserPosts:response.data.posts
                 })
             }
         })
@@ -259,6 +268,17 @@ class GlobalStateProvider extends React.Component {
             console.log(error)
         });
         return res;
+    }
+    logOutClick = () => {
+       this.setState({
+            ...this.state,
+            UserID:'',
+            UserEmail:'',
+            UserUsername:'',
+            UserPosts:''
+        });
+        localStorage.removeItem("id");
+        this.props.history.push('/');
     }
     render() { 
         return ( 
@@ -278,7 +298,8 @@ class GlobalStateProvider extends React.Component {
                 deletePostClick:this.deletePostClick,
                 closeRegisterAccountSuccessClick:this.closeRegisterAccountSuccessClick,
                 closeLoginFailedWarningClick:this.closeLoginFailedWarningClick,
-                getUserTodos:this.getUserTodos, 
+                getUserData:this.getUserData,
+                logOutClick:this.logOutClick, 
                 }}>
                 {this.props.children}
             </globalContext.Provider>

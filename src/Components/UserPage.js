@@ -1,8 +1,8 @@
 import React from 'react';
 import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
 class User extends React.Component {
-    async componentDidMount(){
-        this.context.getUserTodos()
+      componentDidMount(){
+        this.context.getUserData()
     }
     render() { 
         return ( 
@@ -10,7 +10,7 @@ class User extends React.Component {
             <div>
                 <nav className='navbar UserNav'>
                     <h1 className='navbar-brand'>Hello {this.context.state.UserUsername}</h1>
-                    <button className='btn-danger'>Logout</button>
+                    <button onClick={this.context.logOutClick} className='btn-danger'>Logout</button>
                 </nav>
                 <form onSubmit={(e) => this.context.addPostSubmit(e)} className=' UserInputDivContainer'>
                     <input onChange={(e) => this.context.inputPostChange(e)} name='UserPost' type='text' placeholder='Enter posts' value={this.context.state.UserPost}></input>
