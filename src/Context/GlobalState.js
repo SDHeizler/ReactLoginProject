@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {withRouter, Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 // CreateContext
 export const globalContext = React.createContext();
 
@@ -28,7 +28,6 @@ class GlobalStateProvider extends React.Component {
         RegisterAccountSuccess:false,
         LoginFailedWarning:false,
         UserID:'',
-        UserEmail:'',
         UserUsername:'',
         Loading:false,
         Redirect:false,
@@ -163,7 +162,6 @@ class GlobalStateProvider extends React.Component {
                 LoginEmail:'',
                 LoginPassword:'',
                 UserID:response.data.id,
-                UserEmail:response.data.email,
                 UserUsername:response.data.username,
                 Loading:true,
                 LoginFailedWarning:false,
@@ -258,7 +256,6 @@ class GlobalStateProvider extends React.Component {
                 this.setState({
                     ...this.state,
                     UserID:response.data.id,
-                    UserEmail:response.data.email,
                     UserUsername:response.data.username,
                     UserPosts:response.data.posts
                 })
@@ -273,7 +270,6 @@ class GlobalStateProvider extends React.Component {
        this.setState({
             ...this.state,
             UserID:'',
-            UserEmail:'',
             UserUsername:'',
             UserPosts:''
         });

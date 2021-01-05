@@ -1,5 +1,6 @@
 import React from 'react';
 import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
+import PropTypes from 'prop-types';
 class User extends React.Component {
       componentDidMount(){
         this.context.getUserData()
@@ -29,4 +30,14 @@ class User extends React.Component {
     }
 }
 User.contextType = globalContext;
+// PropTypes
+User.propTypes = {
+    UserUsername: PropTypes.string,
+    logOutClick: PropTypes.func,
+    addPostSubmit: PropTypes.func,
+    inputPostChange: PropTypes.func,
+    UserPost:PropTypes.string,
+    UserPosts: PropTypes.array,
+    deletePostClick: PropTypes.func
+};
 export default User;

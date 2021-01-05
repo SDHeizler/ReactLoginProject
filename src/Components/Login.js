@@ -1,5 +1,6 @@
 import React from 'react';
 import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
+import PropTypes from 'prop-types';
 class Login extends React.Component {
     render() { 
         return ( 
@@ -34,5 +35,15 @@ class Login extends React.Component {
          );
     }
 }
-Login.contextType = globalContext; 
+Login.contextType = globalContext;
+// PropTypes
+Login.propTypes = {
+    loginFormSubmit: PropTypes.func,
+    loginEmailChange: PropTypes.func,
+    LoginEmail: PropTypes.string,
+    loginPasswordChange: PropTypes.func,
+    LoginPassword: PropTypes.string,
+    LoginFailedWarning: PropTypes.bool,
+    closeLoginFailedWarningClick: PropTypes.func
+}; 
 export default Login;

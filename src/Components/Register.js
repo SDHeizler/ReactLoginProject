@@ -1,5 +1,6 @@
 import React from 'react';
-import GlobalStateProvider, {globalContext} from '../Context/GlobalState'
+import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
+import PropTypes from 'prop-types';
 class Register extends React.Component {
     render() { 
         return ( 
@@ -60,4 +61,27 @@ class Register extends React.Component {
     }
 }
 Register.contextType = globalContext;
+// PropTypes
+Register.propTypes = {
+    RegisterAccountSuccess : PropTypes.bool,
+    closeRegisterAccountSuccessClick : PropTypes.func,
+    registerformSubmit: PropTypes.func,
+    registerUsernameChange: PropTypes.func,
+    RegisterUsername:PropTypes.string,
+    registerEmailChange: PropTypes.func,
+    RegisterEmail: PropTypes.string,
+    registerPasswordChange: PropTypes.func,
+    RegisterPassword: PropTypes.string,
+    CharacterLength: PropTypes.bool,
+    InvalidCharacterLength: PropTypes.string,
+    CapitalLetter: PropTypes.bool,
+    InvalidCapitalLetter: PropTypes.string,
+    SpecialSymbol: PropTypes.bool,
+    InvalidSpecialCharacter: PropTypes.string,
+    InvalidConfirmPassword: PropTypes.string,
+    confirmPasswordChange: PropTypes.func,
+    ConfirmPassword: PropTypes.string,
+    InvalidConfirmPasswordWarning: PropTypes.string,
+    RegistrationError:PropTypes.string
+};
 export default Register;
