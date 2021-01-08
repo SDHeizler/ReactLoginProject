@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import {v4 as uuidv4} from 'uuid';
 // CreateContext
 export const globalContext = React.createContext();
 
@@ -156,7 +157,6 @@ class GlobalStateProvider extends React.Component {
             loginPassword:this.state.LoginPassword
         }})
         .then((response) => {
-            console.log(response)
             this.setState({
                 ...this.state,
                 LoginEmail:'',
@@ -165,10 +165,10 @@ class GlobalStateProvider extends React.Component {
                 UserUsername:response.data.username,
                 Loading:true,
                 LoginFailedWarning:false,
-                Redirect:true,
                 UserPosts:response.data.posts
             })
             localStorage.setItem("id", JSON.stringify(this.state.UserID));
+            localStorage.setItem("token", JSON.stringify(response.data.token));
             this.props.history.push(`/Login/User/`)
         })
         .catch((error) => {
@@ -190,16 +190,23 @@ class GlobalStateProvider extends React.Component {
     }
     addPostSubmit = async (e) => {
         e.preventDefault();
-        let newUserPost = {id:this.state.UserPosts.length, post:this.state.UserPost}
+        let getId = localStorage.getItem("id");
+        let getToken = localStorage.getItem('token');
+        let userId = JSON.parse(getId);
+        let token = JSON.parse(getToken);
+        let newUserPost = {id:uuidv4(), post:this.state.UserPost}
         let res = await
-        axios.put(`http://localhost:8000/Login/User/${this.state.UserID}`, {
+        axios.put(`http://localhost:8000/Login/User/${userId}`, {
+            headers:{
+                "Content-Type":"application/json",
+                "x-auth-token":token
+            },
             params:{
                 post:newUserPost
             }
         })
         .then((response) => {
             if(response){
-                console.log(response)
                 this.setState({
                     ...this.state,
                     UserPosts:response.data,
@@ -213,15 +220,22 @@ class GlobalStateProvider extends React.Component {
         return res;
     }
     deletePostClick = async (id) => {
+        let getId = localStorage.getItem("id");
+        let getToken = localStorage.getItem('token');
+        let userId = JSON.parse(getId);
+        let token = JSON.parse(getToken);
         let res = await
-        axios.delete(`http://localhost:8000/Login/User/${this.state.UserID}`, {
+        axios.delete(`http://localhost:8000/Login/User/${userId}`, {
+            headers:{
+                "Content-Type":"application/json",
+                "x-auth-token":token
+            },
             data:{
                 deletePost:id
             }
         })
         .then((response) => {
             if(response){
-                console.log(response)
                 this.setState({
                     ...this.state,
                     UserPosts:response.data
@@ -247,11 +261,21 @@ class GlobalStateProvider extends React.Component {
     }
     getUserData = async () => {
         let getId = localStorage.getItem("id");
-        let id = JSON.parse(getId);
-        let res = await 
-        axios.get(`http://localhost:8000/Login/User/${id}`)
+        let getToken = localStorage.getItem('token');
+        let userId = JSON.parse(getId);
+        let token = JSON.parse(getToken);
+        if(!token){
+            this.props.history.push('/Login')
+        }else{
+            let res = await 
+        axios.get(`http://localhost:8000/Login/User/${userId}`, {
+            headers:{
+                "Content-Type":"application/json",
+                'x-auth-token': token,
+            },
+            
+        })
         .then((response) => {
-            console.log(response)
             if(response){
                 this.setState({
                     ...this.state,
@@ -263,8 +287,11 @@ class GlobalStateProvider extends React.Component {
         })
         .catch((error) => {
             console.log(error)
+            this.props.history.push('/Login')
         });
         return res;
+        }
+        
     }
     logOutClick = () => {
        this.setState({
@@ -274,6 +301,7 @@ class GlobalStateProvider extends React.Component {
             UserPosts:''
         });
         localStorage.removeItem("id");
+        localStorage.removeItem("token");
         this.props.history.push('/');
     }
     render() { 
