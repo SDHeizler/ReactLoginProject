@@ -5,6 +5,7 @@ import {v4 as uuidv4} from 'uuid';
 // CreateContext
 export const globalContext = React.createContext();
 
+
 // GlobalState
 class GlobalStateProvider extends React.Component {
     state = {
@@ -88,7 +89,7 @@ class GlobalStateProvider extends React.Component {
             })
     };
     // Function for form submit on register account form. Makes post reguest to the backend. If errors then the incorrect input will be highlighted and post request will not happen.
-    registerformSubmit = (e) => {
+    registerformSubmit = async (e) => {
         e.preventDefault();
         this.setState({
             ...this.state,
@@ -101,7 +102,7 @@ class GlobalStateProvider extends React.Component {
         });
         let passMatchTest = this.state.RegisterPassword === this.state.ConfirmPassword ? true : false;
         if(this.state.SpecialSymbol && this.state.CharacterLength && this.state.CapitalLetter && passMatchTest){
-            axios.post('https://dry-ravine-68054.herokuapp.com/Register', {
+           let res = await axios.post('https://immense-fjord-31204.herokuapp.com/Register',  {
                 registerUsername:this.state.RegisterUsername,
                 registerEmail:this.state.RegisterEmail,
                 registerPassword:this.state.RegisterPassword
@@ -124,7 +125,8 @@ class GlobalStateProvider extends React.Component {
                     InvalidConfirmPasswordWarning:'',
                     RegistrationError:"User Already Exists"
                 })
-            })
+            });
+            return res;
         }else{
             if(!this.state.SpecialSymbol){
                 this.setState({
@@ -179,7 +181,7 @@ class GlobalStateProvider extends React.Component {
                     LoginPassword:'',
                 })
         }else{
-            let res = await axios.post('https://dry-ravine-68054.herokuapp.com/Login',{auth : {
+            let res = await axios.post('https://immense-fjord-31204.herokuapp.com/Login',{auth : {
             loginEmail:this.state.LoginEmail,
             loginPassword:this.state.LoginPassword
         }})
@@ -227,7 +229,7 @@ class GlobalStateProvider extends React.Component {
         let token = JSON.parse(getToken);
         let newUserPost = {id:uuidv4(), post:this.state.UserPost}
         let res = await
-        axios.put(`https://dry-ravine-68054.herokuapp.com/Login/User/${userId}`, {
+        axios.put(`https://immense-fjord-31204.herokuapp.com/Login/User/${userId}`, {
             headers:{
                 "Content-Type":"application/json",
                 "x-auth-token":token
@@ -257,7 +259,7 @@ class GlobalStateProvider extends React.Component {
         let userId = JSON.parse(getId);
         let token = JSON.parse(getToken);
         let res = await
-        axios.delete(`https://dry-ravine-68054.herokuapp.com/Login/User/${userId}`, {
+        axios.delete(`https://immense-fjord-31204.herokuapp.com/Login/User/${userId}`, {
             headers:{
                 "Content-Type":"application/json",
                 "x-auth-token":token
@@ -303,7 +305,7 @@ class GlobalStateProvider extends React.Component {
             this.props.history.push('/Login')
         }else{
             let res = await 
-        axios.get(`https://dry-ravine-68054.herokuapp.com/Login/User/${userId}`, {
+        axios.get(`https://immense-fjord-31204.herokuapp.com/Login/User/${userId}`, {
             headers:{
                 "Content-Type":"application/json",
                 'x-auth-token': token,
@@ -338,7 +340,7 @@ class GlobalStateProvider extends React.Component {
         });
         window.sessionStorage.removeItem("id");
         window.sessionStorage.removeItem("token");
-        this.props.history.push('https://sdheizler.github.io/ReactLoginProject/');
+        this.props.history.push('/ReactLoginProject');
     }
     render() { 
         return ( 
