@@ -13,10 +13,10 @@ class App extends React.Component {
     <div className="App">
       <GlobalStateProvider>
         <Switch>
-          <Route exact path='https://sdheizler.github.io/ReactLoginProject/' ><Home></Home></Route>
-          <Route path='https://sdheizler.github.io/ReactLoginProject/ReactLoginProject/Register' ><Register></Register></Route>
-          <Route exact path='https://sdheizler.github.io/ReactLoginProject/ReactLoginProject/Login' ><Login></Login></Route>
-          <Route path='https://sdheizler.github.io/ReactLoginProject/ReactLoginProject/Login/User' ><User></User></Route>
+          <Route exact path='/ReactLoginProject' ><Home></Home></Route>
+          <Route path='/ReactLoginProject/Register' ><Register></Register></Route>
+          <Route exact path='/ReactLoginProject/Login' ><Login></Login></Route>
+          <Route path='/ReactLoginProject/Login/User' ><User></User></Route>
         </Switch>
       </GlobalStateProvider>
     </div>

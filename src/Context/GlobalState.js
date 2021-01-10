@@ -196,7 +196,7 @@ class GlobalStateProvider extends React.Component {
             })
             window.sessionStorage.setItem("id", JSON.stringify(this.state.UserID));
             window.sessionStorage.setItem("token", JSON.stringify(response.data.token));
-            this.props.history.push(`https://sdheizler.github.io/ReactLoginProject/Login/User/`)
+            this.props.history.push(`/ReactLoginProject/Login/User/`)
         })
         .catch((error) => {
             this.setState({
@@ -300,7 +300,7 @@ class GlobalStateProvider extends React.Component {
         let userId = JSON.parse(getId);
         let token = JSON.parse(getToken);
         if(!token){
-            this.props.history.push('https://sdheizler.github.io/ReactLoginProject/Login')
+            this.props.history.push('/ReactLoginProject/Login')
         }else{
             let res = await 
         axios.get(`https://dry-ravine-68054.herokuapp.com/Login/User/${userId}`, {
@@ -322,7 +322,7 @@ class GlobalStateProvider extends React.Component {
         })
         .catch((error) => {
             console.log(error)
-            this.props.history.push('https://sdheizler.github.io/ReactLoginProject/Login')
+            this.props.history.push('/ReactLoginProject/Login')
         });
         return res;
         }
