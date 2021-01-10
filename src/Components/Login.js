@@ -1,10 +1,9 @@
 import React from 'react';
-import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
+import  {globalContext} from '../Context/GlobalState';
 import PropTypes from 'prop-types';
 class Login extends React.Component {
     render() { 
         return ( 
-            <GlobalStateProvider>
             <div>
                 <form onSubmit={(e) => this.context.loginFormSubmit(e)} className='container CreateAccountForm'>
                     <label>Email</label>
@@ -12,7 +11,8 @@ class Login extends React.Component {
                     onChange={(e) => this.context.loginEmailChange(e)} 
                     htmlFor='Email' 
                     type='email' 
-                    required name='LoginEmail' 
+                    required
+                    name='LoginEmail' 
                     value={this.context.state.LoginEmail} 
                     placeholder='Enter Email'></input>
                     <label>Password</label>
@@ -27,11 +27,10 @@ class Login extends React.Component {
                     <button className='btn-primary' type='Submit'>Login</button>
                 </form>
                 <div style={{display:this.context.state.LoginFailedWarning ? '' : 'none'}} className="container alert alert-danger LoginFailedAlert" >
-                        Login Failed
+                        {this.context.state.LoginFailedText}
                         <button onClick={this.context.closeLoginFailedWarningClick} className="btn-close "></button>
                     </div>
             </div>
-            </GlobalStateProvider>
          );
     }
 }

@@ -13,6 +13,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LinkContainerStyle {
     margin-top: 10vw;
@@ -24,6 +25,7 @@
     transition: ease-in-out;
     transition-duration: 0.3s;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LinkDivStyle {
     width: 100%;
@@ -31,6 +33,7 @@
     border: 2px solid black;
     border-radius: 8px;
     background-color: blue;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountLink {
     text-decoration: none;
@@ -41,6 +44,7 @@
     height: 100%;
     text-align: center;
     padding-top: 50%;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginLink {
     text-decoration: none;
@@ -51,21 +55,25 @@
     height: 100%;
     text-align: center;
     padding-top: 50%;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountLink:hover {
     animation-name: LinkHover;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginLink:hover {
     animation-name: LinkHover;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm {
     display: flex;
     flex-direction: column;
     margin-top: 8vh;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm input {
     margin-bottom: 20px;
@@ -73,27 +81,32 @@
     margin-left: auto;
     margin-right: auto;
     height: 45px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm label {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm button {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
     height: 45px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountUl {
     margin-left: auto;
     margin-right: auto;
     list-style-type: none;
     opacity: 0.8;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserNav {
     background-color: rgb(55, 55, 236);
     color: white;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserInputDivContainer {
     width: 60%;
@@ -104,6 +117,7 @@
     flex-wrap: nowrap;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserInputDivContainer input {
     width: 60%;
@@ -111,6 +125,7 @@
     transition: ease-in-out;
     transition-duration: 0.2s;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserInputDivContainer button {
     height: 40px;
@@ -118,6 +133,7 @@
     transition: ease-in-out;
     transition-duration: 0.2s;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostList {
     width: 60%;
@@ -127,6 +143,7 @@
     transition-duration: 0.2s;
     border-radius: 8px;
     margin-top: 1%;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostList li {
     border-bottom: 1px solid black;
@@ -134,6 +151,7 @@
     margin-top: 10px;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .RegisterConfirmPasswordError {
     transition: ease-in-out;
@@ -142,15 +160,18 @@
     margin-right: auto;
     opacity: 0.8;
     color: red;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostListItem {
     display: flex;
     justify-content: space-between;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostListItem button {
     border-radius: 8px;
     background-color: red;
     color: white;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .RegisterAccountCreatedAlert {
     width: 40%;
@@ -160,11 +181,13 @@
     position: relative;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .RegisterAccountCreatedAlert button {
     position: absolute;
     right: 0;
     width: 40px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginFailedAlert {
     width: 40%;
@@ -174,11 +197,13 @@
     position: relative;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginFailedAlert button {
     position: absolute;
     right: 0;
     width: 40px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
 }
 
@@ -187,6 +212,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LinkContainerStyle {
     margin-top: 20vh;
@@ -200,6 +226,7 @@
     transition-duration: 0.3s;
     border-radius: 8px;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LinkDivStyle {
     width: 100%;
@@ -207,6 +234,7 @@
     border: 1px solid black;
     border-radius: 8px;
     background-color: blue;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountLink {
     text-decoration: none;
@@ -218,6 +246,7 @@
     text-align: center;
     padding-top: 35%;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginLink {
     text-decoration: none;
@@ -229,21 +258,25 @@
     text-align: center;
     padding-top: 35%;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountLink:hover {
     animation-name: LinkHover;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginLink:hover {
     animation-name: LinkHover;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm {
     display: flex;
     flex-direction: column;
     margin-top: 8vh;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm input {
     margin-bottom: 20px;
@@ -251,27 +284,32 @@
     margin-left: auto;
     margin-right: auto;
     height: 45px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm label {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountForm button {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
     height: 45px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .CreateAccountUl {
     margin-left: 20%;
     margin-right: auto;
     list-style-type: none;
     opacity: 0.8;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserNav {
     background-color: blue;
     color: white;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserInputDivContainer {
     width: 60%;
@@ -282,6 +320,7 @@
     flex-wrap: nowrap;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserInputDivContainer input {
     width: 80%;
@@ -289,6 +328,7 @@
     transition: ease-in-out;
     transition-duration: 0.2s;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserInputDivContainer button {
     height: 40px;
@@ -296,6 +336,7 @@
     transition: ease-in-out;
     transition-duration: 0.2s;
     border-radius: 8px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostList {
     width: 60%;
@@ -305,6 +346,7 @@
     transition-duration: 0.2s;
     border-radius: 8px;
     margin-top: 1%;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostList li {
     border-bottom: 1px solid black;
@@ -312,6 +354,7 @@
     margin-top: 10px;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .RegisterConfirmPasswordError {
     transition: ease-in-out;
@@ -320,15 +363,18 @@
     margin-right: auto;
     opacity: 0.8;
     color: red;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostListItem {
     display: flex;
     justify-content: space-between;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .UserPostListItem button {
     border-radius: 8px;
     background-color: red;
     color: white;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .RegisterAccountCreatedAlert {
     width: 40%;
@@ -338,11 +384,13 @@
     position: relative;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .RegisterAccountCreatedAlert button {
     position: absolute;
     right: 0;
     width: 40px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginFailedAlert {
     width: 40%;
@@ -352,10 +400,12 @@
     position: relative;
     transition: ease-in-out;
     transition-duration: 0.2s;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
   .LoginFailedAlert button {
     position: absolute;
     right: 0;
     width: 40px;
+    font-family: Roboto, Open Sans, Lato, sans-serif;
   }
 }

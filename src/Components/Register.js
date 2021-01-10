@@ -1,10 +1,9 @@
 import React from 'react';
-import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
+import{globalContext} from '../Context/GlobalState';
 import PropTypes from 'prop-types';
 class Register extends React.Component {
     render() { 
         return ( 
-        <GlobalStateProvider>
             <div>
                 <div style={{display:this.context.state.RegisterAccountSuccess ? '' : 'none'}} className="container alert alert-success RegisterAccountCreatedAlert" >
                         Account Created
@@ -56,7 +55,6 @@ class Register extends React.Component {
                     <button className='btn-primary' type='Submit'>Create Account</button>
                 </form>
             </div>
-        </GlobalStateProvider>
          );
     }
 }

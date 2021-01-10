@@ -1,5 +1,5 @@
 import React from 'react';
-import GlobalStateProvider, {globalContext} from '../Context/GlobalState';
+import  {globalContext} from '../Context/GlobalState';
 import PropTypes from 'prop-types';
 class User extends React.Component {
       componentDidMount(){
@@ -7,7 +7,6 @@ class User extends React.Component {
     }
     render() { 
         return ( 
-            <GlobalStateProvider>
             <div>
                 <nav className='navbar UserNav'>
                     <h1 className='navbar-brand'>Hello {this.context.state.UserUsername}</h1>
@@ -25,7 +24,6 @@ class User extends React.Component {
                     })}
                 </ul>
             </div>
-            </GlobalStateProvider>
          );
     }
 }
