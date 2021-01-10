@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ReactLoginProject/static/css/main.1e9f8b44.chunk.css",
-    "main.js": "/ReactLoginProject/static/js/main.1c392d5f.chunk.js",
-    "main.js.map": "/ReactLoginProject/static/js/main.1c392d5f.chunk.js.map",
+    "main.js": "/ReactLoginProject/static/js/main.3501bce1.chunk.js",
+    "main.js.map": "/ReactLoginProject/static/js/main.3501bce1.chunk.js.map",
     "runtime-main.js": "/ReactLoginProject/static/js/runtime-main.698dd5e8.js",
     "runtime-main.js.map": "/ReactLoginProject/static/js/runtime-main.698dd5e8.js.map",
     "static/js/2.a1197ed8.chunk.js": "/ReactLoginProject/static/js/2.a1197ed8.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.698dd5e8.js",
     "static/js/2.a1197ed8.chunk.js",
     "static/css/main.1e9f8b44.chunk.css",
-    "static/js/main.1c392d5f.chunk.js"
+    "static/js/main.3501bce1.chunk.js"
   ]
 }
