@@ -198,7 +198,7 @@ class GlobalStateProvider extends React.Component {
             })
             window.sessionStorage.setItem("id", JSON.stringify(this.state.UserID));
             window.sessionStorage.setItem("token", JSON.stringify(response.data.token));
-            this.props.history.push(`/Login/User/`)
+            this.props.history.push(`/Login/User`);
         })
         .catch((error) => {
             this.setState({
