@@ -208,7 +208,7 @@ class GlobalStateProvider extends React.Component {
                     LoginPassword:'',
             })
         })
-        return res;
+        
         }
         
     }
