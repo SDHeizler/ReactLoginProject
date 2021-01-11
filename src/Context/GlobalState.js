@@ -198,7 +198,7 @@ class GlobalStateProvider extends React.Component {
             })
             window.sessionStorage.setItem("id", JSON.stringify(this.state.UserID));
             window.sessionStorage.setItem("token", JSON.stringify(response.data.token));
-            this.props.history.push(`/ReactLoginProject/Login/User`);
+            this.props.history.push(`/Login/User`);
         })
         .catch((error) => {
             this.setState({
@@ -302,7 +302,7 @@ class GlobalStateProvider extends React.Component {
         let userId = JSON.parse(getId);
         let token = JSON.parse(getToken);
         if(!token){
-            this.props.history.push('/ReactLoginProject/Login')
+            this.props.history.push('/Login')
         }else{
             let res = await 
         axios.get(`https://immense-fjord-31204.herokuapp.com/Login/User/${userId}`, {
@@ -324,7 +324,7 @@ class GlobalStateProvider extends React.Component {
         })
         .catch((error) => {
             console.log(error)
-            this.props.history.push('/ReactLoginProject/Login')
+            this.props.history.push('/Login')
         });
         return res;
         }
