@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/ReactLoginProject/static/css/main.1e9f8b44.chunk.css",
-    "main.js": "/ReactLoginProject/static/js/main.7f9888ea.chunk.js",
-    "main.js.map": "/ReactLoginProject/static/js/main.7f9888ea.chunk.js.map",
+    "main.js": "/ReactLoginProject/static/js/main.f986d3e5.chunk.js",
+    "main.js.map": "/ReactLoginProject/static/js/main.f986d3e5.chunk.js.map",
     "runtime-main.js": "/ReactLoginProject/static/js/runtime-main.698dd5e8.js",
     "runtime-main.js.map": "/ReactLoginProject/static/js/runtime-main.698dd5e8.js.map",
-    "static/js/2.23e2be0c.chunk.js": "/ReactLoginProject/static/js/2.23e2be0c.chunk.js",
-    "static/js/2.23e2be0c.chunk.js.map": "/ReactLoginProject/static/js/2.23e2be0c.chunk.js.map",
+    "static/js/2.1c6dc6dc.chunk.js": "/ReactLoginProject/static/js/2.1c6dc6dc.chunk.js",
+    "static/js/2.1c6dc6dc.chunk.js.map": "/ReactLoginProject/static/js/2.1c6dc6dc.chunk.js.map",
     "index.html": "/ReactLoginProject/index.html",
     "static/css/main.1e9f8b44.chunk.css.map": "/ReactLoginProject/static/css/main.1e9f8b44.chunk.css.map",
-    "static/js/2.23e2be0c.chunk.js.LICENSE.txt": "/ReactLoginProject/static/js/2.23e2be0c.chunk.js.LICENSE.txt"
+    "static/js/2.1c6dc6dc.chunk.js.LICENSE.txt": "/ReactLoginProject/static/js/2.1c6dc6dc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.698dd5e8.js",
-    "static/js/2.23e2be0c.chunk.js",
+    "static/js/2.1c6dc6dc.chunk.js",
     "static/css/main.1e9f8b44.chunk.css",
-    "static/js/main.7f9888ea.chunk.js"
+    "static/js/main.f986d3e5.chunk.js"
   ]
 }
